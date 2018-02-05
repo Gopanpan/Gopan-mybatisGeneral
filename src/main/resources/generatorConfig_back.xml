@@ -36,7 +36,7 @@
     </javaTypeResolver>
 
 	<!-- 生成PO类 的位置 -->
-    <javaModelGenerator targetPackage="bing.Pan.cloud.dataAccess.user.entity"
+    <javaModelGenerator targetPackage="bing.Pan.sso.domain.entity"
                         targetProject="/Users/bing.pan/IdeaProjects/bing.Pan_private/bing.Pan-mybatisGeneral/src/main/java">
       <!-- enableSubPackages 是否让schema作为包的后缀 -->
       <property name="enableSubPackages" value="false" />
@@ -51,7 +51,7 @@
     </sqlMapGenerator>
 
 	<!-- mapper接口文件位置 -->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="bing.Pan.cloud.dataAccess.user.mapperInterface"
+    <javaClientGenerator type="XMLMAPPER" targetPackage="bing.Pan.sso.mapper.mapperInterface"
                          targetProject="/Users/bing.pan/IdeaProjects/bing.Pan_private/bing.Pan-mybatisGeneral/src/main/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
@@ -63,7 +63,16 @@
 		<ignoreColumn> 		节点表示需要忽略的列，delimitedColumnName属性表示匹配列名的时候是否区分大小写。
 							如果为true则区分。默认值为false，不区分大小写。
 	 -->
-	<table tableName="ucf_member_user" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-	<table tableName="ucf_member_bank_card" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+	<table tableName="%" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+	 	<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP" />
+	 	<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP" />
+	 	<columnOverride column="last_login" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP" />
+	 	<columnOverride column="request_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP" />
+	 	<columnOverride column="join_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP" />
+	 	<columnOverride column="request_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP" />
+	
+        <ignoreColumn column="id" delimitedColumnName="true"/>
+	
+	</table>
   </context>
 </generatorConfiguration>

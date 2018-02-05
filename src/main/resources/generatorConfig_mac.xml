@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="mbaitsGenerator" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!-- 是否去除自动生成的注解true:是, false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接信息 oracle-->
+        <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+           connectionURL="jdbc:oracle:thin:@10.20.70.203:1521:xfzfdbtest"
+           userId="phoenix_fshk"
+           password="qweasd2014">
+       </jdbcConnection>-->
+
+        <!-- 数据库连接信息 mysql-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.95.222.249:3306/bing.Pan_springcloud"
+                        userId="root"
+                        password="Pan@123/.,">
+        </jdbcConnection>
+
+
+
+
+        <!-- 默认为false ，把DECIMAL和 NUMERIC类型解析为 Integer ，
+             为true时把DECIMAL和 NUMERIC类型解析为java.math.BigDecimal
+         -->
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <!-- 生成PO类 的位置 -->
+        <javaModelGenerator targetPackage="bing.Pan.cloud.dataaccess.boss.entity"
+                            targetProject="/Users/bing.pan/IdeaProjects/bing.Pan_private_idea/bing.Pan-mybatisGeneral/src/main/java">
+            <!-- enableSubPackages 是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- mapper映射文件位置 -->
+        <sqlMapGenerator targetPackage="sqlMapper"
+                         targetProject="/Users/bing.pan/IdeaProjects/bing.Pan_private_idea/bing.Pan-mybatisGeneral/src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- mapper接口文件位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="bing.Pan.cloud.dataaccess.boss.mapperInterface"
+                             targetProject="/Users/bing.pan/IdeaProjects/bing.Pan_private_idea/bing.Pan-mybatisGeneral/src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--
+            生成对应表的POJO并不要示例
+            tableName="%" 		表示反向生成数据库中的所有表
+            <columnOverride>	节点表示 需要重写的列
+            <ignoreColumn> 		节点表示需要忽略的列，delimitedColumnName属性表示匹配列名的时候是否区分大小写。
+                                如果为true则区分。默认值为false，不区分大小写。
+         -->
+        <table tableName="CL_BOSS_USER" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+
+    </context>
+</generatorConfiguration>
