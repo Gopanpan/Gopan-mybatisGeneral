@@ -5,11 +5,15 @@
 
 <generatorConfiguration>
  
-  <context id="mbaitsGenerator" targetRuntime="MyBatis3">
-  	<commentGenerator>
-  		<!-- 是否去除自动生成的注解true:是, false:否 -->
-  		<property name="suppressAllComments" value="true"/>
-  	</commentGenerator>
+  <context id="mybatisGenerator" targetRuntime="MyBatis3">
+      <property name="javaFileEncoding" value="UTF-8" />
+
+      <commentGenerator type="bing.Pan.mybatisGeneral.CustomizeGenerator">
+          <!-- 是否去除自动生成的注解true:是, false:否 -->
+          <property name="suppressAllComments" value="false"/>
+          <property name="addRemarkComments" value="true"/>
+
+      </commentGenerator>
   	
   	<!-- 数据库连接信息 oracle-->
      <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
