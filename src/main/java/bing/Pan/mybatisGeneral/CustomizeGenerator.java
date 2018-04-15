@@ -182,6 +182,7 @@ public class CustomizeGenerator implements CommentGenerator {
     }
 
 
+    @Override
     public void addEnumComment(InnerEnum innerEnum,
                                IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
@@ -203,7 +204,8 @@ public class CustomizeGenerator implements CommentGenerator {
         innerEnum.addJavaDocLine(" */"); 
     }
 
-    
+
+    @Override
     public void addFieldComment(Field field,
                                 IntrospectedTable introspectedTable,
                                 IntrospectedColumn introspectedColumn) {
@@ -225,6 +227,7 @@ public class CustomizeGenerator implements CommentGenerator {
     }
 
 
+    @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
             return;
@@ -246,6 +249,7 @@ public class CustomizeGenerator implements CommentGenerator {
     }
 
 
+    @Override
     public void addGeneralMethodComment(Method method,
                                         IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
@@ -269,6 +273,7 @@ public class CustomizeGenerator implements CommentGenerator {
     }
 
 
+    @Override
     public void addGetterComment(Method method,
                                  IntrospectedTable introspectedTable,
                                  IntrospectedColumn introspectedColumn) {
