@@ -12,22 +12,18 @@
         <commentGenerator type="bing.Pan.mybatisGeneral.CustomizeGenerator">
             <!-- 是否去除自动生成的注解true:是, false:否 -->
             <property name="suppressAllComments" value="false"/>
+            <!--是否添加实体类上的注释，默认 true-->
             <property name="addRemarkComments" value="true"/>
 
         </commentGenerator>
   	
-  	<!-- 数据库连接信息 oracle-->
-    <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
-        connectionURL="jdbc:oracle:thin:@10.20.70.203:1521:xfzfdbtest"
-        userId="phoenix_fshk"
-        password="qweasd2014">
-    </jdbcConnection>-->
+
     
     <!-- 数据库连接信息 mysql-->
  	<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://47.95.222.249:3306/springCloud"
+        connectionURL="jdbc:mysql://127.0.0.1:3306/carrey_sso"
         userId="root"
-        password="Pan@123/.,">
+        password="root">
     </jdbcConnection>
     
     
@@ -65,7 +61,7 @@
 		<ignoreColumn> 		节点表示需要忽略的列，delimitedColumnName属性表示匹配列名的时候是否区分大小写。
 							如果为true则区分。默认值为false，不区分大小写。
 	 -->
-	  <table tableName="CL_BOSS%" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+	  <table tableName="sso_%" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
 
 
 

@@ -4,17 +4,11 @@ import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
-
 import org.mybatis.generator.api.dom.xml.XmlElement;
-
-import org.mybatis.generator.config.PropertyRegistry;
-import org.mybatis.generator.internal.util.StringUtility;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-
-import static org.mybatis.generator.internal.util.StringUtility.isTrue;
 
 
 
@@ -27,141 +21,30 @@ import static org.mybatis.generator.internal.util.StringUtility.isTrue;
  */
 public class CustomizeGenerator implements CommentGenerator {
 
-    /** The properties. */
     private Properties properties;
 
-    /** The suppress date. */
-    private boolean suppressDate;
-
-    /** The suppress all comments. */
+    /** 是否去除自动生成的注解 */
     private boolean suppressAllComments;
 
-    /** The addition of table remark's comments.
-     * If suppressAllComments is true, this option is ignored*/
+   /** 是否添加实体类上的注释，默认 true */
     private boolean addRemarkComments;
 
+    /** 是否添加实体类 get set方法注释 默认false  */
     private boolean suppressGetSetComments;
 
-    private SimpleDateFormat dateFormat;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM dd yyyy HH:mm:ss");
 
-    /**
-     * Instantiates a new default comment generator.
-     */
+
     public CustomizeGenerator() {
         super();
         properties = new Properties();
-        suppressDate = false;
         suppressAllComments = false;
-        addRemarkComments = false;
-        suppressGetSetComments = true;
+        addRemarkComments = true;
+        suppressGetSetComments = false;
     }
 
 
-    @Override
-    public void addJavaFileComment(CompilationUnit compilationUnit) {
-        // add no file level comments by default
-    }
 
-    /**
-     * Adds a suitable comment to warn users that the element was generated, and when it was generated.
-     *
-     * @param xmlElement
-     *            the xml element
-     */
-    @Override
-    public void addComment(XmlElement xmlElement) {
-        if (suppressAllComments) {
-            return;
-        }
-
-    }
-
-    @Override
-    public void addRootComment(XmlElement rootElement) {
-        // add no document level comments by default
-    }
-    @Override
-    public void addConfigurationProperties(Properties properties) {
-        this.properties.putAll(properties);
-
-        suppressDate = isTrue(properties
-                .getProperty(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_DATE));
-
-        suppressAllComments = isTrue(properties
-                .getProperty(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_ALL_COMMENTS));
-
-        addRemarkComments = isTrue(properties
-                .getProperty(PropertyRegistry.COMMENT_GENERATOR_ADD_REMARK_COMMENTS));
-
-        String dateFormatString = properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_DATE_FORMAT);
-        if (StringUtility.stringHasValue(dateFormatString)) {
-            dateFormat = new SimpleDateFormat(dateFormatString);
-        }
-    }
-
-    /**
-     * This method adds the custom javadoc tag for. You may do nothing if you do not wish to include the Javadoc tag -
-     * however, if you do not include the Javadoc tag then the Java merge capability of the eclipse plugin will break.
-     *
-     * @param javaElement
-     *            the java element
-     * @param markAsDoNotDelete
-     *            the mark as do not delete
-     */
-    protected void addJavadocTag(JavaElement javaElement,
-                                 boolean markAsDoNotDelete) {
-        javaElement.addJavaDocLine(" *");
-        StringBuilder sb = new StringBuilder();
-        sb.append(" * ");
-        sb.append("@ author : bing.Pan");
-        if (markAsDoNotDelete) {
-            sb.append(" do_not_delete_during_merge");
-        }
-        String s = getDateString();
-        if (s != null) {
-            sb.append(' ');
-            sb.append(s);
-        }
-        javaElement.addJavaDocLine(sb.toString());
-    }
-
-    /**
-     * This method returns a formated date string to include in the Javadoc tag
-     * and XML comments. You may return null if you do not want the date in
-     * these documentation elements.
-     *
-     * @return a string representing the current timestamp, or null
-     */
-    protected String getDateString() {
-        if (suppressDate) {
-            return null;
-        } else if (dateFormat != null) {
-            return dateFormat.format(new Date());
-        } else {
-            return new Date().toString();
-        }
-    }
-
-    @Override
-    public void addClassComment(InnerClass innerClass,
-                                IntrospectedTable introspectedTable) {
-        if (suppressAllComments) {
-            return;
-        }
-
-        StringBuilder sb = new StringBuilder();
-
-        innerClass.addJavaDocLine("/**");
-        innerClass .addJavaDocLine(" * This class was generated by MyBatis Generator.");
-
-        sb.append(" * This class corresponds to the database table "); 
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        innerClass.addJavaDocLine(sb.toString());
-
-
-
-        innerClass.addJavaDocLine(" */");
-    }
 
 
 
@@ -182,29 +65,13 @@ public class CustomizeGenerator implements CommentGenerator {
     }
 
 
-    @Override
-    public void addEnumComment(InnerEnum innerEnum,
-                               IntrospectedTable introspectedTable) {
-        if (suppressAllComments) {
-            return;
-        }
 
-        StringBuilder sb = new StringBuilder();
-
-        innerEnum.addJavaDocLine("/**"); 
-        innerEnum
-                .addJavaDocLine(" * This enum was generated by MyBatis Generator."); 
-
-        sb.append(" * This enum corresponds to the database table "); 
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        innerEnum.addJavaDocLine(sb.toString());
-
-        addJavadocTag(innerEnum, false);
-
-        innerEnum.addJavaDocLine(" */"); 
-    }
-
-
+    /**
+     * 此方法将数据库字段注释映射到实体对象的javaDoc注解上
+     * @param field
+     * @param introspectedTable
+     * @param introspectedColumn
+     */
     @Override
     public void addFieldComment(Field field,
                                 IntrospectedTable introspectedTable,
@@ -214,60 +81,40 @@ public class CustomizeGenerator implements CommentGenerator {
         }
         String remarks = introspectedColumn.getRemarks();
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        sb.append('.');
-        sb.append(introspectedColumn.getActualColumnName() );
+        StringBuilder builder = new StringBuilder();
+        builder.append(introspectedTable.getFullyQualifiedTable());
+        builder.append('.');
+        builder.append(introspectedColumn.getActualColumnName() );
 
         field.addJavaDocLine("/**");
-        field.addJavaDocLine(" *@comment : " + remarks);
-        field.addJavaDocLine(" *@sidesc  : " + sb.toString());
-
+        field.addJavaDocLine(" * @comment : " + remarks);
+        field.addJavaDocLine(" * @sidesc  : " + builder.toString());
         field.addJavaDocLine(" */");
     }
 
 
+    /**
+     * 此方法生成接口方法javaDoc注释
+     * @param method
+     * @param introspectedTable
+     */
     @Override
-    public void addFieldComment(Field field, IntrospectedTable introspectedTable) {
+    public void addGeneralMethodComment(Method method, IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
 
-        field.addJavaDocLine("/**"); 
-        field
-                .addJavaDocLine(" * This field was generated by MyBatis Generator."); 
-
-        sb.append(" * This field corresponds to the database table "); 
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        field.addJavaDocLine(sb.toString());
-
-        addJavadocTag(field, false);
-
-        field.addJavaDocLine(" */"); 
-    }
-
-
-    @Override
-    public void addGeneralMethodComment(Method method,
-                                        IntrospectedTable introspectedTable) {
-        if (suppressAllComments) {
-            return;
-        }
-
-        StringBuilder sb = new StringBuilder();
-
-
-        sb.append("This method corresponds to the database table ");
-        sb.append(introspectedTable.getFullyQualifiedTable());
+        builder.append("This method corresponds to the database table ");
+        builder.append(introspectedTable.getFullyQualifiedTable());
 
         method.addJavaDocLine("/**");
         method.addJavaDocLine(" *@create  : Created by intelliJ IDEA");
         method.addJavaDocLine(" *@author  : bing.Pan");
         method.addJavaDocLine(" *@e-mail  : 15923508369@163.com");
         method.addJavaDocLine(" *@gmdate  : " + getDateString());
-        method.addJavaDocLine(" *@sidesc  : " + sb.toString());
+        method.addJavaDocLine(" *@sidesc  : " + builder.toString());
 
         method.addJavaDocLine(" */");
     }
@@ -281,34 +128,29 @@ public class CustomizeGenerator implements CommentGenerator {
             return;
         }
 
-        if(suppressGetSetComments){
+        if(!suppressGetSetComments){
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
 
         method.addJavaDocLine("/**"); 
-        method
-                .addJavaDocLine(" * This method was generated by MyBatis Generator."); 
+        method.addJavaDocLine(" * This method was generated by MyBatis Generator.");
 
-        sb.append(" * This method returns the value of the database column "); 
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        sb.append('.');
-        sb.append(introspectedColumn.getActualColumnName());
-        method.addJavaDocLine(sb.toString());
+        builder.append(" * This method returns the value of the database column ");
+        builder.append(introspectedTable.getFullyQualifiedTable());
+        builder.append('.');
+        builder.append(introspectedColumn.getActualColumnName());
+        method.addJavaDocLine(builder.toString());
 
         method.addJavaDocLine(" *"); 
-
-        sb.setLength(0);
-        sb.append(" * @return the value of "); 
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        sb.append('.');
-        sb.append(introspectedColumn.getActualColumnName());
-        method.addJavaDocLine(sb.toString());
-
-        addJavadocTag(method, false);
-
-        method.addJavaDocLine(" */"); 
+        builder.setLength(0);
+        builder.append(" * @return the value of ");
+        builder.append(introspectedTable.getFullyQualifiedTable());
+        builder.append('.');
+        builder.append(introspectedColumn.getActualColumnName());
+        method.addJavaDocLine(builder.toString());
+        method.addJavaDocLine(" */");
     }
 
 
@@ -320,14 +162,13 @@ public class CustomizeGenerator implements CommentGenerator {
             return;
         }
 
-        if(suppressGetSetComments){
+        if(!suppressGetSetComments){
             return;
         }
         StringBuilder sb = new StringBuilder();
 
         method.addJavaDocLine("/**"); 
-        method
-                .addJavaDocLine(" * This method was generated by MyBatis Generator."); 
+        method.addJavaDocLine(" * This method was generated by MyBatis Generator.");
 
         sb.append(" * This method sets the value of the database column "); 
         sb.append(introspectedTable.getFullyQualifiedTable());
@@ -346,32 +187,100 @@ public class CustomizeGenerator implements CommentGenerator {
         sb.append('.');
         sb.append(introspectedColumn.getActualColumnName());
         method.addJavaDocLine(sb.toString());
-
-        addJavadocTag(method, false);
-
-        method.addJavaDocLine(" */"); 
+        method.addJavaDocLine(" */");
     }
 
 
     @Override
     public void addClassComment(InnerClass innerClass,
                                 IntrospectedTable introspectedTable, boolean markAsDoNotDelete) {
+        addClassComment(innerClass,introspectedTable);
+    }
+
+
+    @Override
+    public void addClassComment(InnerClass innerClass,
+                                IntrospectedTable introspectedTable) {
+        if (suppressAllComments) {
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        innerClass.addJavaDocLine("/**");
+        innerClass .addJavaDocLine(" * This class was generated by MyBatis Generator.");
+        sb.append(" * This class corresponds to the database table ");
+        sb.append(introspectedTable.getFullyQualifiedTable());
+        innerClass.addJavaDocLine(sb.toString());
+        innerClass.addJavaDocLine(" */");
+    }
+
+
+
+    @Override
+    public void addJavaFileComment(CompilationUnit compilationUnit) {
+        // add no file level comments by default
+    }
+
+    @Override
+    public void addComment(XmlElement xmlElement) {
+        if (suppressAllComments) {
+            return;
+        }
+
+    }
+
+    @Override
+    public void addRootComment(XmlElement rootElement) {
+        // add no document level comments by default
+    }
+    @Override
+    public void addConfigurationProperties(Properties properties) {
+
+    }
+
+
+    @Override
+    public void addEnumComment(InnerEnum innerEnum,
+                               IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
             return;
         }
 
         StringBuilder sb = new StringBuilder();
 
-        innerClass.addJavaDocLine("/**");
-        innerClass
-                .addJavaDocLine(" * This class was generated by MyBatis Generator.");
+        innerEnum.addJavaDocLine("/**");
+        innerEnum.addJavaDocLine(" * This enum was generated by MyBatis Generator.");
 
-        sb.append(" * This class corresponds to the database table ");
+        sb.append(" * This enum corresponds to the database table ");
         sb.append(introspectedTable.getFullyQualifiedTable());
-        innerClass.addJavaDocLine(sb.toString());
-
-        addJavadocTag(innerClass, markAsDoNotDelete);
-
-        innerClass.addJavaDocLine(" */");
+        innerEnum.addJavaDocLine(sb.toString());
+        innerEnum.addJavaDocLine(" */");
     }
+
+    @Override
+    public void addFieldComment(Field field, IntrospectedTable introspectedTable) {
+        if (suppressAllComments) {
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+
+        field.addJavaDocLine("/**");
+        field.addJavaDocLine(" * This field was generated by MyBatis Generator.");
+        sb.append(" * This field corresponds to the database table ");
+        sb.append(introspectedTable.getFullyQualifiedTable());
+        field.addJavaDocLine(sb.toString());
+        field.addJavaDocLine(" */");
+    }
+
+
+
+    protected String getDateString() {
+        if(dateFormat != null) {
+            return dateFormat.format(new Date());
+        } else {
+            return new Date().toString();
+        }
+    }
+
+
+
 }
