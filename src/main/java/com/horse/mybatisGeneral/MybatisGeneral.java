@@ -1,4 +1,4 @@
-package bing.Pan.mybatisGeneral;
+package com.horse.mybatisGeneral;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;

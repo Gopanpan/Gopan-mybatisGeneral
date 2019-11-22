@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>bing.Pan</groupId>
-    <artifactId>bing.Pan-mybatisGeneral</artifactId>
+    <groupId>com.horse</groupId>
+    <artifactId>Gopan-mybatisGeneral</artifactId>
     <version>${project.version}</version>
     <build>
         <plugins>
@@ -65,11 +65,7 @@
             <version>${mysql-connector.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc14</artifactId>
-            <version>${oracle-connector.version}</version>
-        </dependency>
+
 
     </dependencies>
 
