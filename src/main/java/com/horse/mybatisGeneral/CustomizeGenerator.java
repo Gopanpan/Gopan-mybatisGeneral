@@ -14,7 +14,7 @@ import java.util.Properties;
 
 /**
  * @crea : Created by intelliJ IDEA 17.2
- * @auth : bing.Pan
+ * @auth : Gopan
  * @mail : 15923508369@163.com
  * @date : 03 24 2018 19:04
  * @desc :
@@ -56,7 +56,7 @@ public class CustomizeGenerator implements CommentGenerator {
         }
         topLevelClass.addJavaDocLine("/**");
         topLevelClass.addJavaDocLine(" *@create : Created by intelliJ IDEA");
-        topLevelClass.addJavaDocLine(" *@author : bing.Pan");
+        topLevelClass.addJavaDocLine(" *@author : Gopan");
         topLevelClass.addJavaDocLine(" *@e-mail : 15923508369@163.com");
         topLevelClass.addJavaDocLine(" *@gmdate : " + getDateString());
         topLevelClass.addJavaDocLine(" *@sidesc : This class corresponds to the database table "+
@@ -111,7 +111,7 @@ public class CustomizeGenerator implements CommentGenerator {
 
         method.addJavaDocLine("/**");
         method.addJavaDocLine(" *@create  : Created by intelliJ IDEA");
-        method.addJavaDocLine(" *@author  : bing.Pan");
+        method.addJavaDocLine(" *@author  : Gopan");
         method.addJavaDocLine(" *@e-mail  : 15923508369@163.com");
         method.addJavaDocLine(" *@gmdate  : " + getDateString());
         method.addJavaDocLine(" *@sidesc  : " + builder.toString());
