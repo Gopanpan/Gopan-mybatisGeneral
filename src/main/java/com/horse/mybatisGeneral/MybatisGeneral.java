@@ -21,7 +21,7 @@ public class MybatisGeneral {
     public static void main(String[] args) throws Exception {
 
         List<String> warnings = new ArrayList<String>();
-        File configFile = new File(MybatisGeneral.class.getResource("/generatorConfig_windows.xml").getFile());
+        File configFile = new File(MybatisGeneral.class.getResource("/config.xml").getFile());
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(true);
