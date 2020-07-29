@@ -9,7 +9,7 @@ import org.mybatis.generator.api.dom.xml.XmlElement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-
+import java.util.Set;
 
 
 /**
@@ -20,6 +20,8 @@ import java.util.Properties;
  * @desc :
  */
 public class CustomizeGenerator implements CommentGenerator {
+
+
 
     private Properties properties;
 
@@ -59,8 +61,7 @@ public class CustomizeGenerator implements CommentGenerator {
         topLevelClass.addJavaDocLine(" *@author : Gopan");
         topLevelClass.addJavaDocLine(" *@e-mail : 15923508369@163.com");
         topLevelClass.addJavaDocLine(" *@gmdate : " + getDateString());
-        topLevelClass.addJavaDocLine(" *@sidesc : This class corresponds to the database table "+
-                introspectedTable.getFullyQualifiedTable());
+        topLevelClass.addJavaDocLine(" *@sidesc : This class corresponds to the database table "+ introspectedTable.getFullyQualifiedTable());
         topLevelClass.addJavaDocLine(" */");
     }
 
@@ -271,6 +272,35 @@ public class CustomizeGenerator implements CommentGenerator {
         field.addJavaDocLine(" */");
     }
 
+
+
+
+
+
+    @Override
+    public void addGeneralMethodAnnotation(Method method, IntrospectedTable introspectedTable, Set<FullyQualifiedJavaType> set) {
+
+    }
+
+    @Override
+    public void addGeneralMethodAnnotation(Method method, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn, Set<FullyQualifiedJavaType> set) {
+
+    }
+
+    @Override
+    public void addFieldAnnotation(Field field, IntrospectedTable introspectedTable, Set<FullyQualifiedJavaType> set) {
+
+    }
+
+    @Override
+    public void addFieldAnnotation(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn, Set<FullyQualifiedJavaType> set) {
+
+    }
+
+    @Override
+    public void addClassAnnotation(InnerClass innerClass, IntrospectedTable introspectedTable, Set<FullyQualifiedJavaType> set) {
+
+    }
 
 
     protected String getDateString() {
