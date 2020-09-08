@@ -60,6 +60,61 @@
 
 
 
+    <build>
+        <plugins>
+
+            <!--screw 数据库文档生成插件-->
+            <plugin>
+                <groupId>cn.smallbun.screw</groupId>
+                <artifactId>screw-maven-plugin</artifactId>
+                <version>1.0.4</version>
+                <dependencies>
+                    <!-- HikariCP -->
+                    <dependency>
+                        <groupId>com.zaxxer</groupId>
+                        <artifactId>HikariCP</artifactId>
+                        <version>3.4.5</version>
+                    </dependency>
+                    <!--mysql driver-->
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.21</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <username>quit</username>
+                    <password>Itcast@2020</password>
+                    <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
+                    <jdbcUrl>jdbc:mysql://172.16.1.45:3306/funit_interview?useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true</jdbcUrl>
+
+                    <!--生成文件类型，支持HTML WORD MD 共3种文件格式-->
+                    <fileType>HTML</fileType>
+                    <!--打开文件输出目录-->
+                    <openOutputDir>false</openOutputDir>
+                    <!--生成模板-->
+                    <produceType>freemarker</produceType>
+                    <!--文档名称 为空时:将采用[数据库名称-描述-版本号]作为文档名称-->
+                    <fileName>趣IT-面试服务数据库文档</fileName>
+                    <!--描述-->
+                    <description>趣IT-面试服务数据库文档</description>
+                    <!--版本-->
+                    <version>1.0.0.0</version>
+                    <!--标题-->
+                    <title>数据库文档</title>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 
 
 </project>
