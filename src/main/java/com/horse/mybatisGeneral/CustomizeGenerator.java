@@ -34,8 +34,6 @@ public class CustomizeGenerator implements CommentGenerator {
     /** 是否添加实体类 get set方法注释 默认false  */
     private boolean suppressGetSetComments;
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM dd yyyy HH:mm:ss");
-
 
     public CustomizeGenerator() {
         super();
@@ -57,11 +55,13 @@ public class CustomizeGenerator implements CommentGenerator {
             return;
         }
         topLevelClass.addJavaDocLine("/**");
-        topLevelClass.addJavaDocLine(" *@create : Created by intelliJ IDEA");
-        topLevelClass.addJavaDocLine(" *@author : Gopan");
-        topLevelClass.addJavaDocLine(" *@e-mail : 15923508369@163.com");
-        topLevelClass.addJavaDocLine(" *@gmdate : " + getDateString());
-        topLevelClass.addJavaDocLine(" *@sidesc : This class corresponds to the database table "+ introspectedTable.getFullyQualifiedTable());
+        topLevelClass.addJavaDocLine(" * This class corresponds to the database table "+ introspectedTable.getFullyQualifiedTable());
+        topLevelClass.addJavaDocLine(" * ");
+        topLevelClass.addJavaDocLine(" * <p> create  created by horse-generator</p>  ");
+        topLevelClass.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  (dd/MM/YYYY HH:mm)</p>  ");
+        topLevelClass.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
+        topLevelClass.addJavaDocLine(" * @author   Gopan");
+        topLevelClass.addJavaDocLine(" * @version  1.0.0");
         topLevelClass.addJavaDocLine(" */");
     }
 
@@ -87,10 +87,8 @@ public class CustomizeGenerator implements CommentGenerator {
         builder.append('.');
         builder.append(introspectedColumn.getActualColumnName() );
 
-        field.addJavaDocLine("/**");
-        field.addJavaDocLine(" * @comment : " + remarks);
-        field.addJavaDocLine(" * @sidesc  : " + builder.toString());
-        field.addJavaDocLine(" */");
+        field.addJavaDocLine("/** " +  remarks +  "  "+  builder.toString() + " */");
+
     }
 
 
@@ -104,19 +102,11 @@ public class CustomizeGenerator implements CommentGenerator {
         if (suppressAllComments) {
             return;
         }
-
-        StringBuilder builder = new StringBuilder();
-
-        builder.append("This method corresponds to the database table ");
-        builder.append(introspectedTable.getFullyQualifiedTable());
-
         method.addJavaDocLine("/**");
-        method.addJavaDocLine(" *@create  : Created by intelliJ IDEA");
-        method.addJavaDocLine(" *@author  : Gopan");
-        method.addJavaDocLine(" *@e-mail  : 15923508369@163.com");
-        method.addJavaDocLine(" *@gmdate  : " + getDateString());
-        method.addJavaDocLine(" *@sidesc  : " + builder.toString());
-
+        method.addJavaDocLine(" * ");
+        method.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  (dd/MM/YYYY HH:mm)</p>  ");
+        method.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
+        method.addJavaDocLine(" * @author  Gopan");
         method.addJavaDocLine(" */");
     }
 
@@ -303,13 +293,7 @@ public class CustomizeGenerator implements CommentGenerator {
     }
 
 
-    protected String getDateString() {
-        if(dateFormat != null) {
-            return dateFormat.format(new Date());
-        } else {
-            return new Date().toString();
-        }
-    }
+
 
 
 

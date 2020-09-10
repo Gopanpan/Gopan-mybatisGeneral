@@ -8,6 +8,9 @@
     <context id="mybatisGenerator" targetRuntime="MyBatis3">
 
         <property name="javaFileEncoding" value="UTF-8" />
+
+        <plugin type="com.horse.mybatisGeneral.CustomizeBatisPlugin" > </plugin>
+
         <commentGenerator type="com.horse.mybatisGeneral.CustomizeGenerator">
             <!-- 是否去除自动生成的注解true:是, false:否 -->
             <property name="suppressAllComments" value="false"/>
@@ -67,13 +70,6 @@
          </table>-->
 
         <table tableName="in_video" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="in_video_chapter" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="in_play_record" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="in_play_detail_record" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-
-        <table tableName="in_course" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="in_course_chapter" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="in_course_record" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
 
     </context>
 </generatorConfiguration>
