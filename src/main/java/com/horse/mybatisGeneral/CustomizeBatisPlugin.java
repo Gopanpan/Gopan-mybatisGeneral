@@ -11,11 +11,12 @@ import org.mybatis.generator.api.dom.java.TopLevelClass;
 import java.util.List;
 
 /**
- * @create: Created by intelliJIDEA
- * @author: Gopan
- * @e-mail: 15923508369@163.com
- * @gmdate: 10/09/2020 16:59  星期四 (dd/MM/YYYY HH:mm)
- * @sidesc:
+ * <p> create  Pan Pan worked hard to achieve </p>
+ * <p>   time  10/09/2020 18:19  星期四 (dd/MM/YYYY HH:mm) </p>
+ * <p>  email  15923508369@163.com </p>
+ *
+ * @author Gopan
+ * @version 1.0.0
  */
 public class CustomizeBatisPlugin extends PluginAdapter {
 

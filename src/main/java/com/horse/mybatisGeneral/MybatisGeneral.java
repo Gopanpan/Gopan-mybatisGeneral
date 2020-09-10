@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @crea : Created by intelliJ IDEA 17.2
- * @auth : Gopan
- * @mail : 15923508369@163.com
- * @date : 09 26 2017 11:04
- * @desc :
+ * <p> create  Pan Pan worked hard to achieve </p>
+ * <p>   time  10/09/2020 18:19  星期四 (dd/MM/YYYY HH:mm) </p>
+ * <p>  email  15923508369@163.com </p>
+ *
+ * @author Gopan
+ * @version 1.0.0
  */
 public class MybatisGeneral {
 
