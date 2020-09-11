@@ -85,12 +85,9 @@ public class CustomizeGenerator implements CommentGenerator {
         }
         String remarks = introspectedColumn.getRemarks();
 
-        StringBuilder builder = new StringBuilder();
-        builder.append(introspectedTable.getFullyQualifiedTable());
-        builder.append('.');
-        builder.append(introspectedColumn.getActualColumnName() );
+        String actualColumnName = introspectedColumn.getActualColumnName();
 
-        field.addJavaDocLine("/** " +  remarks +  "  "+  builder.toString() + " */");
+        field.addJavaDocLine("/** chineseDescription [" +  remarks +  "] , columnName ["+  actualColumnName + "]  */");
 
     }
 
