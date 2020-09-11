@@ -14,12 +14,13 @@ import java.util.Set;
 
 /**
  * <p> create  Pan Pan worked hard to achieve </p>
- * <p>   time  10/09/2020 18:19  星期四 (dd/MM/YYYY HH:mm) </p>
+ * <p>   time  11/09/2020 11:22  星期五 【dd/MM/YYYY HH:mm】 </p>
  * <p>  email  15923508369@163.com </p>
  *
  * @author Gopan
  * @version 1.0.0
  */
+
 public class CustomizeGenerator implements CommentGenerator {
 
 
@@ -57,7 +58,7 @@ public class CustomizeGenerator implements CommentGenerator {
         }
         topLevelClass.addJavaDocLine("/**");
         topLevelClass.addJavaDocLine(" * <p> create  created by horse-generator</p>  ");
-        topLevelClass.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  (dd/MM/YYYY HH:mm)</p>  ");
+        topLevelClass.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  【dd/MM/YYYY HH:mm】 </p>  ");
         topLevelClass.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
         topLevelClass.addJavaDocLine(" * ");
         topLevelClass.addJavaDocLine(" * This class corresponds to the database table "+ introspectedTable.getFullyQualifiedTable());
@@ -106,7 +107,7 @@ public class CustomizeGenerator implements CommentGenerator {
         }
         method.addJavaDocLine("/**");
         method.addJavaDocLine(" * ");
-        method.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  (dd/MM/YYYY HH:mm)</p>  ");
+        method.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  【dd/MM/YYYY HH:mm】 </p>  ");
         method.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
         method.addJavaDocLine(" * @author  Gopan");
         method.addJavaDocLine(" */");

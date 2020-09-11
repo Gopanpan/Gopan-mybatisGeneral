@@ -12,12 +12,13 @@ import java.util.List;
 
 /**
  * <p> create  Pan Pan worked hard to achieve </p>
- * <p>   time  10/09/2020 18:19  星期四 (dd/MM/YYYY HH:mm) </p>
+ * <p>   time  11/09/2020 11:22  星期五 【dd/MM/YYYY HH:mm】 </p>
  * <p>  email  15923508369@163.com </p>
  *
  * @author Gopan
  * @version 1.0.0
  */
+
 public class CustomizeBatisPlugin extends PluginAdapter {
 
     @Override
@@ -47,7 +48,7 @@ public class CustomizeBatisPlugin extends PluginAdapter {
 
         interfaze.addJavaDocLine("/**");
         interfaze.addJavaDocLine(" * <p> create  created by horse-generator</p>  ");
-        interfaze.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  (dd/MM/YYYY HH:mm)</p>  ");
+        interfaze.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  " 【dd/MM/YYYY HH:mm】 </p>  ");
         interfaze.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
         interfaze.addJavaDocLine(" * ");
         interfaze.addJavaDocLine(" * This class corresponds to the database table "+ introspectedTable.getFullyQualifiedTable());
