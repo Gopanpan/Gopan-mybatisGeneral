@@ -56,11 +56,12 @@ public class CustomizeGenerator implements CommentGenerator {
             return;
         }
         topLevelClass.addJavaDocLine("/**");
-        topLevelClass.addJavaDocLine(" * This class corresponds to the database table "+ introspectedTable.getFullyQualifiedTable());
-        topLevelClass.addJavaDocLine(" * ");
         topLevelClass.addJavaDocLine(" * <p> create  created by horse-generator</p>  ");
         topLevelClass.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  (dd/MM/YYYY HH:mm)</p>  ");
         topLevelClass.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
+        topLevelClass.addJavaDocLine(" * ");
+        topLevelClass.addJavaDocLine(" * This class corresponds to the database table "+ introspectedTable.getFullyQualifiedTable());
+        topLevelClass.addJavaDocLine(" * ");
         topLevelClass.addJavaDocLine(" * @author   Gopan");
         topLevelClass.addJavaDocLine(" * @version  1.0.0");
         topLevelClass.addJavaDocLine(" */");

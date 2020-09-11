@@ -46,11 +46,12 @@ public class CustomizeBatisPlugin extends PluginAdapter {
 
 
         interfaze.addJavaDocLine("/**");
-        interfaze.addJavaDocLine(" * This class corresponds to the database table "+ introspectedTable.getFullyQualifiedTable());
-        interfaze.addJavaDocLine(" * ");
         interfaze.addJavaDocLine(" * <p> create  created by horse-generator</p>  ");
         interfaze.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  (dd/MM/YYYY HH:mm)</p>  ");
         interfaze.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
+        interfaze.addJavaDocLine(" * ");
+        interfaze.addJavaDocLine(" * This class corresponds to the database table "+ introspectedTable.getFullyQualifiedTable());
+        interfaze.addJavaDocLine(" * ");
         interfaze.addJavaDocLine(" * @author   Gopan");
         interfaze.addJavaDocLine(" * @version  1.0.0");
         interfaze.addJavaDocLine(" */");
