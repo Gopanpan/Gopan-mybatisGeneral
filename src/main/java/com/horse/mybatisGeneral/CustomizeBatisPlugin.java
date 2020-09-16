@@ -29,8 +29,15 @@ public class CustomizeBatisPlugin extends PluginAdapter {
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         // 添加domain的import
+        topLevelClass.addImportedType("lombok.AllArgsConstructor");
+        topLevelClass.addImportedType("lombok.Builder");
         topLevelClass.addImportedType("lombok.Data");
+        topLevelClass.addImportedType("lombok.NoArgsConstructor");
+
         // 添加domain的注解
+        topLevelClass.addAnnotation("@Builder");
+        topLevelClass.addAnnotation("@NoArgsConstructor");
+        topLevelClass.addAnnotation("@AllArgsConstructor");
         topLevelClass.addAnnotation("@Data");
         return true;
     }
