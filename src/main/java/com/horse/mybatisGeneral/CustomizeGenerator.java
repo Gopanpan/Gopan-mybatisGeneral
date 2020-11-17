@@ -13,11 +13,10 @@ import java.util.Set;
 
 
 /**
- * <p> create  Pan Pan worked hard to achieve </p>
  * <p>   time  11/09/2020 11:22  星期五 【dd/MM/YYYY HH:mm】 </p>
  * <p>  email  15923508369@163.com </p>
  *
- * @author Gopan
+ * @author Gopal.pan
  * @version 1.0.0
  */
 
@@ -57,13 +56,12 @@ public class CustomizeGenerator implements CommentGenerator {
             return;
         }
         topLevelClass.addJavaDocLine("/**");
-        topLevelClass.addJavaDocLine(" * <p> create  created by horse-generator</p>  ");
         topLevelClass.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  【dd/MM/YYYY HH:mm】 </p>  ");
         topLevelClass.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
         topLevelClass.addJavaDocLine(" * ");
-        topLevelClass.addJavaDocLine(" * This class corresponds to the database table ["+ introspectedTable.getFullyQualifiedTable() + "]  comments [" + introspectedTable.getRemarks()+"] ");
+        topLevelClass.addJavaDocLine(" *    This class corresponds to the database table ["+ introspectedTable.getFullyQualifiedTable() + "]  comments [" + introspectedTable.getRemarks()+"] ");
         topLevelClass.addJavaDocLine(" * ");
-        topLevelClass.addJavaDocLine(" * @author   Gopan");
+        topLevelClass.addJavaDocLine(" * @author   Gopal.pan");
         topLevelClass.addJavaDocLine(" * @version  1.0.0");
         topLevelClass.addJavaDocLine(" */");
     }
@@ -106,7 +104,7 @@ public class CustomizeGenerator implements CommentGenerator {
         method.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  【dd/MM/YYYY HH:mm】 </p>  ");
         method.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
         method.addJavaDocLine(" * ");
-        method.addJavaDocLine(" * @author  Gopan");
+        method.addJavaDocLine(" * @author  Gopal.pan");
         method.addJavaDocLine(" */");
     }
 
