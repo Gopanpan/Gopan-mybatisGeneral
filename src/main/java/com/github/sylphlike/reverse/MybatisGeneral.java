@@ -1,4 +1,4 @@
-package com.horse.mybatisGeneral;
+package com.github.sylphlike.reverse;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
@@ -22,10 +22,11 @@ public class MybatisGeneral {
     public static void main(String[] args) throws Exception {
 
         List<String> warnings = new ArrayList<String>();
-        File configFile = new File(MybatisGeneral.class.getResource("/funit-exercise.xml").getFile());
+
+        //File configFile = new File(MybatisGeneral.class.getResource("/funit-exercise.xml").getFile());
         //File configFile = new File(MybatisGeneral.class.getResource("/funit-interview.xml").getFile());
         //File configFile = new File(MybatisGeneral.class.getResource("/unite-staff.xml").getFile());
-        //File configFile = new File(MybatisGeneral.class.getResource("/unite-demo.xml").getFile());
+        File configFile = new File(MybatisGeneral.class.getResource("/unite-demo.xml").getFile());
 
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);

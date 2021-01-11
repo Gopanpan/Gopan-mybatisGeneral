@@ -10,9 +10,9 @@
         <property name="javaFileEncoding" value="UTF-8" />
 
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
-        <plugin type="com.horse.mybatisGeneral.CustomizeBatisPlugin" />
+        <plugin type="com.github.sylphlike.reverse.CustomizeBatisPlugin" />
 
-        <commentGenerator type="com.horse.mybatisGeneral.CustomizeGenerator">
+        <commentGenerator type="com.github.sylphlike.reverse.CustomizeGenerator">
             <!-- 是否去除自动生成的注解true:是, false:否 -->
             <property name="suppressAllComments" value="false"/>
             <!--是否添加实体类上的注释，默认 true-->

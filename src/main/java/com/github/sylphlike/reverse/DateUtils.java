@@ -1,4 +1,4 @@
-package com.horse.mybatisGeneral;
+package com.github.sylphlike.reverse;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

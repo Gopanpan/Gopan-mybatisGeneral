@@ -1,4 +1,4 @@
-package com.horse.mybatisGeneral;
+package com.github.sylphlike.reverse;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;

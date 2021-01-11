@@ -1,4 +1,4 @@
-package com.horse.mybatisGeneral;
+package com.github.sylphlike.reverse;
 
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedColumn;
@@ -6,8 +6,6 @@ import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Properties;
 import java.util.Set;
 
@@ -83,7 +81,7 @@ public class CustomizeGenerator implements CommentGenerator {
 
         String actualColumnName = introspectedColumn.getActualColumnName();
 
-        field.addJavaDocLine("/** field name comment [" +  remarks +  "] , database field name ["+  actualColumnName + "]  */");
+        field.addJavaDocLine("/**  database field name ["+  actualColumnName + "] , field name comment [" +  remarks +  "]  */");
 
     }
 
