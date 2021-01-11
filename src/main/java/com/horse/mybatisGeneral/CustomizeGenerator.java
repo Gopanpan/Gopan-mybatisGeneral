@@ -13,8 +13,8 @@ import java.util.Set;
 
 
 /**
- * <p>   time  11/09/2020 11:22  星期五 【dd/MM/YYYY HH:mm】 </p>
- * <p>  email  15923508369@163.com </p>
+ * <p>   time  11/09/2020 11:22  星期五 (dd/MM/YYYY HH:mm)
+ * <p>  email  15923508369@163.com
  *
  * @author Gopal.pan
  * @version 1.0.0
@@ -27,13 +27,13 @@ public class CustomizeGenerator implements CommentGenerator {
     private Properties properties;
 
     /** 是否去除自动生成的注解 */
-    private boolean suppressAllComments;
+    private final boolean suppressAllComments;
 
    /** 是否添加实体类上的注释，默认 true */
-    private boolean addRemarkComments;
+    private final boolean addRemarkComments;
 
     /** 是否添加实体类 get set方法注释 默认false  */
-    private boolean suppressGetSetComments;
+    private final boolean suppressGetSetComments;
 
 
     public CustomizeGenerator() {
@@ -56,11 +56,9 @@ public class CustomizeGenerator implements CommentGenerator {
             return;
         }
         topLevelClass.addJavaDocLine("/**");
-        topLevelClass.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  【dd/MM/YYYY HH:mm】 </p>  ");
-        topLevelClass.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
-        topLevelClass.addJavaDocLine(" * ");
-        topLevelClass.addJavaDocLine(" *    This class corresponds to the database table ["+ introspectedTable.getFullyQualifiedTable() + "]  comments [" + introspectedTable.getRemarks()+"] ");
-        topLevelClass.addJavaDocLine(" * ");
+        topLevelClass.addJavaDocLine(" * This class corresponds to the database table ["+ introspectedTable.getFullyQualifiedTable() + "]  comments [" + introspectedTable.getRemarks()+"] ");
+        topLevelClass.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  (dd/MM/YYYY HH:mm)   ");
+        topLevelClass.addJavaDocLine(" * <p>  email  15923508369@163.com  ");
         topLevelClass.addJavaDocLine(" * @author   Gopal.pan");
         topLevelClass.addJavaDocLine(" * @version  1.0.0");
         topLevelClass.addJavaDocLine(" */");
@@ -85,7 +83,7 @@ public class CustomizeGenerator implements CommentGenerator {
 
         String actualColumnName = introspectedColumn.getActualColumnName();
 
-        field.addJavaDocLine("/** chineseDescription [" +  remarks +  "] , columnName ["+  actualColumnName + "]  */");
+        field.addJavaDocLine("/** field name comment [" +  remarks +  "] , database field name ["+  actualColumnName + "]  */");
 
     }
 
@@ -101,9 +99,9 @@ public class CustomizeGenerator implements CommentGenerator {
             return;
         }
         method.addJavaDocLine("/**");
-        method.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  "  【dd/MM/YYYY HH:mm】 </p>  ");
-        method.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
         method.addJavaDocLine(" * ");
+        method.addJavaDocLine(" * <p>  time  " + DateUtils.getDateString() +  "  (dd/MM/YYYY HH:mm)   ");
+        method.addJavaDocLine(" * <p> email  15923508369@163.com  ");
         method.addJavaDocLine(" * @author  Gopal.pan");
         method.addJavaDocLine(" */");
     }

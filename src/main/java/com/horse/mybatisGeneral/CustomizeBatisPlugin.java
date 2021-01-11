@@ -11,8 +11,8 @@ import org.mybatis.generator.api.dom.java.TopLevelClass;
 import java.util.List;
 
 /**
- * <p>   time  11/09/2020 11:22  星期五 【dd/MM/YYYY HH:mm】 </p>
- * <p>  email  15923508369@163.com </p>
+ * <p>   time  11/09/2020 11:22  星期五 (dd/MM/YYYY HH:mm)
+ * <p>  email  15923508369@163.com
  *
  * @author Gopal.pan
  * @version 1.0.0
@@ -53,11 +53,9 @@ public class CustomizeBatisPlugin extends PluginAdapter {
 
 
         interfaze.addJavaDocLine("/**");
-        interfaze.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  " 【dd/MM/YYYY HH:mm】 </p>  ");
-        interfaze.addJavaDocLine(" * <p>  email  15923508369@163.com</p>  ");
-        interfaze.addJavaDocLine(" * ");
-        interfaze.addJavaDocLine(" *    This class corresponds to the database table ["+ introspectedTable.getFullyQualifiedTable() + "]  comments [" + introspectedTable.getRemarks()+"] ");
-        interfaze.addJavaDocLine(" * ");
+        interfaze.addJavaDocLine(" * This class corresponds to the database table ["+ introspectedTable.getFullyQualifiedTable() + "]  comments [" + introspectedTable.getRemarks()+"] ");
+        interfaze.addJavaDocLine(" * <p>   time  " + DateUtils.getDateString() +  " (dd/MM/YYYY HH:mm)   ");
+        interfaze.addJavaDocLine(" * <p>  email  15923508369@163.com  ");
         interfaze.addJavaDocLine(" * @author   Gopal.pan");
         interfaze.addJavaDocLine(" * @version  1.0.0");
         interfaze.addJavaDocLine(" */");
